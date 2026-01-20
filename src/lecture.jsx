@@ -1,7 +1,3 @@
-
-
-
-
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
@@ -35,26 +31,31 @@ const ApiCalling810 = () => {
 
             <button onClick={() => setNo(no + 1)}>+++</button>
             <table border={1}>
-                <tr>
-                    <td>userid</td>
-                    <td>id</td>
-                    <td>title</td>
-                    <td>body</td>
-                </tr>
-                {
-                    list.map((i, index) => (
-                        <tr>
-                            <td>{i.userId}</td>
-                            <td>{i.id}</td>
-                            <td>{i.title}</td>
-                            <td>{i.body}</td>
-                        </tr>
-                    ))
-                }
+                <thead>
+                    <tr>
+                        <td>userid</td>
+                        <td>id</td>
+                        <td>title</td>
+                        <td>body</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        list.map((i, index) => (
+                            <tr id={index}>
+                                <td>{i.userId}</td>
+                                <td>{i.id}</td>
+                                <td>{i.title}</td>
+                                <td>{i.body}</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
             </table>
         </div>
     )
 }
 
 export default ApiCalling810
+
 

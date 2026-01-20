@@ -3,14 +3,15 @@ import React, { useEffect, useState } from 'react'
 
 const ApiCalling = () => {
 
-    const [list, setList] = useState()
+    const [list, setList] = useState([])
 
     useEffect(() => {
         apiCall()
-    }, [])
+    },[])
 
     function apiCall() {
-        axios.get('https://dummyjson.com/quotesF')
+        // axios.get('https://dummyjson.com/quotes')
+        axios.get('https://jsonplaceholder.typicode.com/comments?postId=1')
             .then((res) => {
                 console.log(res.data);
                 setList(res.data)
@@ -26,23 +27,23 @@ const ApiCalling = () => {
                 <thead>
                     <tr>
                         <td>id</td>
-                        <td>quotes</td>
-                        <td>author</td>
+                        <td>name</td>
+                        <td>body</td>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         list.map((i, index) => (
-                            <tr>
+                            <tr id={index}>
                                 <td>{i.id}</td>
-                                <td>{i.quotes}</td>
-                                <td>{i.author}</td>
+                                <td>{i.name}</td>
+                                <td>{i.body}</td>
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
-        </div>
+        </div >
     )
 }
 export default ApiCalling
