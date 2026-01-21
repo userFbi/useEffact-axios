@@ -1,51 +1,45 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-const ApiCalling810 = () => {
+const ProductApi = () => {
 
     const [list, setList] = useState([])
-    const [no, setNo] = useState(0)
-
-    // [] => 1 load
-    // [state] => single
-    // [state , state] => multi
 
     useEffect(() => {
-        apiCall()
-    }, [no])
+        productApiCall()
+    },[])
 
-    function apiCall() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+    function productApiCall() {
+        axios.get("https://dummyjson.com/products")
             .then((res) => {
-                console.log(res.data);
-                setList(res.data)
+                setList(res.data.products);
+                console.log(res.data.products);
             })
             .catch((error) => {
                 console.log(error);
             })
     }
 
+
     return (
         <div>
-
-            <button onClick={() => setNo(no + 1)}>+++</button>
             <table border={1}>
                 <thead>
                     <tr>
-                        <td>userid</td>
                         <td>id</td>
                         <td>title</td>
-                        <td>body</td>
+                        <td>category</td>
+                        <td>description</td>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         list.map((i, index) => (
-                            <tr id={index}>
-                                <td>{i.userId}</td>
+                            <tr key={index}>
                                 <td>{i.id}</td>
                                 <td>{i.title}</td>
-                                <td>{i.body}</td>
+                                <td>{i.category}</td>
+                                <td>{i.description}</td>
                             </tr>
                         ))
                     }
@@ -55,6 +49,4 @@ const ApiCalling810 = () => {
     )
 }
 
-export default ApiCalling810
-
-
+export default ProductApi
