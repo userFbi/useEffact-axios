@@ -1,14 +1,20 @@
 import './App.css';
 import ApiCalling from './ApiCalling';
 import ApiCalling810 from './lecture';
-import ProductApi from './ProductApi';
+import ProductApi from './Api/ProductApi';
+import CartApi from './Api/CartApi';
+import UserApi from './Api/UserApi';
+import PostApi from './Api/PostApi';
 
 function App() {
     return (
         <>
             {/* <ApiCalling />   */}
             {/* <ApiCalling810 /> */}
-            <ProductApi/>
+            {/* <ProductApi/> */}
+            {/* <CartApi /> */}
+            {/* <UserApi/> */}
+            <PostApi/>
         </>
     );
 }

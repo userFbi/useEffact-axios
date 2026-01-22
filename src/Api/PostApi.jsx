@@ -1,25 +1,22 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-const ProductApi = () => {
+const PostApi = () => {
 
     const [list, setList] = useState([])
 
     useEffect(() => {
-        productApiCall()
-    },[])
+        CallingApi()
+    }, [])
 
-    function productApiCall() {
-        axios.get("https://dummyjson.com/products")
+    function CallingApi() {
+        axios.get("https://dummyjson.com/post")
             .then((res) => {
-                setList(res.data.products);
-                console.log(res.data.products);
+                setList(res.data.posts)
+                console.log(res.data.posts)
             })
-            .catch((error) => {
-                console.log(error);
-            })
+            .catch((error) => console.log(error))
     }
-
 
     return (
         <div>
@@ -28,8 +25,8 @@ const ProductApi = () => {
                     <tr>
                         <td>id</td>
                         <td>title</td>
-                        <td>category</td>
-                        <td>description</td>
+                        <td>body</td>
+                        <td>views</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,8 +35,8 @@ const ProductApi = () => {
                             <tr key={index}>
                                 <td>{i.id}</td>
                                 <td>{i.title}</td>
-                                <td>{i.category}</td>
-                                <td>{i.description}</td>
+                                <td>{i.body}</td>
+                                <td>{i.views}</td>
                             </tr>
                         ))
                     }
@@ -49,4 +46,4 @@ const ProductApi = () => {
     )
 }
 
-export default ProductApi
+export default PostApi
